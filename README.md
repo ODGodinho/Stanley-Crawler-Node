@@ -30,8 +30,8 @@
 
 ## Table of Contents
 
--   [Libraries](#libraries)
--   [Dependencies](#dependencies)
+-   [Libraries](#-libraries)
+-   [Dependencies](#-dependencies)
 -   [Installing and Updating](#installing-or-updating)
     -   [Install](#install)
 -   [Start Project](#start-project)
@@ -83,7 +83,7 @@ To install use this template project and clone repository,
 bash ./start.bash
 ```
 
-### Start Project
+## Start Project
 
 First install dependencies with the following command
 
