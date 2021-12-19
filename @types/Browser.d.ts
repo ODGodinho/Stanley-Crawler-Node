@@ -1,5 +1,7 @@
+import { BrowserContextContract, BrowserContextOptionsContract } from './Context';
+/*§BrowserLaunchOptionImport§*/
 
-export interface BrowserLaunchOptionsContract {
+export interface BrowserLaunchOptionsContract /*§BrowserLaunchOptionExtends*/  {
     /**
      * Additional arguments to pass to the browser instance. The list of Chromium flags can be found
      * [here](http://peter.sh/experiments/chromium-command-line-switches/).
@@ -81,7 +83,7 @@ export interface BrowserTypeContract {
     launch(options?: BrowserLaunchOptionsContract): Promise<BrowserContract | any>;
 }
 
-export interface BrowserContract {
+export interface BrowserContract extends Browser {
     close(): Promise<any>;
     contexts(): Array<BrowserContextContract>;
     newContext(options?: BrowserContextOptionsContract): Promise<BrowserContextContract>;

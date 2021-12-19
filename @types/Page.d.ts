@@ -1,4 +1,4 @@
-import { Page } from 'playwright';
+import { Page } from '§crawler§';
 
 export interface PageContract extends Page {
 

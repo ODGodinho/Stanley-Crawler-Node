@@ -1,5 +1,5 @@
 import { BrowserContract, BrowserLaunchOptionsContract, BrowserTypeContract } from '../../@types/Browser';
-import { BrowserContextOptionsContract } from '../../@types/Context';
+import { BrowserContextContract, BrowserContextOptionsContract } from '../../@types/Context';
 import { PageContract } from '../../@types/Page';
 import Context from './Context';
 
@@ -39,7 +39,7 @@ class Browser<BrowserType extends BrowserTypeContract, PageType extends PageCont
         const contextFunction = this.browser?.newContext?.bind(this.browser)
             || this.browser?.createIncognitoBrowserContext?.bind(this.browser);
 
-        const context = await contextFunction(options);
+        const context: BrowserContextContract<PageType> = await contextFunction(options);
         const contextInstance = new Context(this, context);
 
         this.contexts.push(
