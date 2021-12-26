@@ -1,22 +1,14 @@
-import { BrowserContract, BrowserLaunchOptionsContract, BrowserTypeContract } from '../../@types/Browser';
-import { BrowserContextContract, BrowserContextOptionsContract } from '../../@types/Context';
-import { PageContract } from '../../@types/Page';
-import Context from './Context';
+import { BrowserLaunchOptionsContract, BrowserTypeContract } from '@odg/essentials-crawler-node/@types/Browser';
+import { PageContract } from '@odg/essentials-crawler-node/@types/Page';
+import BrowserAbstract from '@odg/essentials-crawler-node/Context/Browser';
 
-class Browser<BrowserType extends BrowserTypeContract, PageType extends PageContract> {
-
-    public readonly browserType: BrowserType;
-
-    public browser?: BrowserContract;
-
-    public contexts: Array<Context<BrowserType, PageType>> = [];
+class Browser<BrowserType extends BrowserTypeContract<PageType>, PageType extends PageContract> extends BrowserAbstract<BrowserType, PageType> {
 
     constructor(browserType: BrowserType) {
-        this.browserType = browserType;
-
+        super(browserType);
     }
 
-    private browserOptions(): BrowserLaunchOptionsContract {
+    protected browserOptions(): BrowserLaunchOptionsContract {
         return {
             headless: false,
             args: [
@@ -31,22 +23,6 @@ class Browser<BrowserType extends BrowserTypeContract, PageType extends PageCont
 
     async initBrowser() {
         this.browser = await this.browserType.launch(this.browserOptions());
-    }
-
-    async newContext(options?: BrowserContextOptionsContract): Promise<Context<BrowserType, PageType>> {
-        if (!this.browser) throw new Error("Browser is not available");
-
-        const contextFunction = this.browser?.newContext?.bind(this.browser)
-            || this.browser?.createIncognitoBrowserContext?.bind(this.browser);
-
-        const context: BrowserContextContract<PageType> = await contextFunction(options);
-        const contextInstance = new Context(this, context);
-
-        this.contexts.push(
-            contextInstance
-        )
-
-        return contextInstance;
     }
 
 }

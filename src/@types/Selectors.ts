@@ -1,4 +1,4 @@
-import Selectors from '../src/Selectors/Selectors';
+import Selectors from '../Selectors/Selectors';
 
 type SelectorsType = typeof Selectors;
 

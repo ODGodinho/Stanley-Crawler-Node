@@ -587,6 +587,9 @@ esrecurse@^4.3.0:
   dependencies:
     estraverse "^5.2.0"
 
+"essentials-crawler@file:../Browser-Fingerprint-JS/dist":
+  version "0.0.0"
+
 estraverse@^4.1.1:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.3.0.tgz#398ad3f3c5a24948be7725e83d11a7de28cdbd1d"
@@ -1202,7 +1205,7 @@ pkg-dir@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-playwright-core@=1.17.1:
+playwright-core@=1.17.1, playwright-core@^1.17.1:
   version "1.17.1"
   resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.17.1.tgz#a16e0f89284a0ed8ae6d77e1c905c84b8a2ba022"
   integrity sha512-C3c8RpPiC3qr15fRDN6dx6WnUkPLFmST37gms2aoHPDRvp7EaGDPMMZPpqIm/QWB5J40xDrQCD4YYHz2nBTojQ==

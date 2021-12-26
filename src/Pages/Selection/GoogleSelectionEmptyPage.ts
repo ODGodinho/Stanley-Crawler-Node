@@ -1,5 +1,5 @@
 
-import { PageContract } from '../../../@types/Page';
+import { PageContract } from '../../@types/Page';
 import BasePage from '../BasePage';
 
 export default class GoogleSelectionEmptyPage<PageType extends PageContract> extends BasePage<PageType> {

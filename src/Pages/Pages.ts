@@ -1,5 +1,5 @@
-import Instances from '../../@types/Instances';
-import { PageContract } from '../../@types/Page';
+import Instances from '../@types/Instances';
+import { PageContract } from '../@types/Page';
 import BasePage from './BasePage';
 import GoogleSearchPage from './Search/GoogleSearchPage';
 import GoogleSelectionEmptyPage from './Selection/GoogleSelectionEmptyPage';

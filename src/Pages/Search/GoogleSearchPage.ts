@@ -1,4 +1,4 @@
-import { PageContract } from '../../../@types/Page';
+import { PageContract } from '../../@types/Page';
 import BasePage from '../BasePage';
 
 class GoogleSearchPage<PageType extends PageContract> extends BasePage<PageType> {

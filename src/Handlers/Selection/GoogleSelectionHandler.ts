@@ -1,5 +1,6 @@
-import { PageContract } from '../../../@types/Page';
-import BaseHandler, { HandlerFunction, HandlerState } from '../BaseHandler';
+import { HandlerState } from '@odg/essentials-crawler-node/Handlers/BaseHandler';
+import { PageContract } from '../../@types/Page';
+import BaseHandler, { HandlerFunction } from '../BaseHandler';
 
 class GoogleSelectionHandler<PageType extends PageContract> extends BaseHandler<PageType> {
 

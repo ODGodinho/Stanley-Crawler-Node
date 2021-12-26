@@ -1,7 +1,8 @@
 import Browser from './Context/Browser';
-import puppeteer, { Page } from 'puppeteer';
+import puppeteer from 'puppeteer';
 import ExampleGoogleCrawlerController from './Controllers/ExampleGoogleCrawlerController';
-const browser = new Browser<typeof puppeteer, Page>(puppeteer);
+import { PageContract } from './@types/Page';
+const browser = new Browser<typeof puppeteer, PageContract>(puppeteer);
 
 browser.initBrowser()
 .then(async () => {

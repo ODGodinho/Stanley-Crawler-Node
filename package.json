@@ -24,6 +24,7 @@
     "typescript": "*"
   },
   "dependencies": {
+    "@odg/essentials-crawler-node": "^0.1.0",
     "colors": "^1.4.0"
   }
 }

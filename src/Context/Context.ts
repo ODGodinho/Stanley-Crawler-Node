@@ -1,25 +1,13 @@
-import { BrowserTypeContract } from '../../@types/Browser';
-import { BrowserContextContract } from '../../@types/Context';
-import { PageContract } from '../../@types/Page';
+import { BrowserTypeContract } from '@odg/essentials-crawler-node/@types/Browser';
+import { BrowserContextContract } from '@odg/essentials-crawler-node/@types/Context';
+import { PageContract } from '@odg/essentials-crawler-node/@types/Page';
+import ContextEssentials from '@odg/essentials-crawler-node/Context/Context';
 import Browser from './Browser';
 
-class Context<BrowserType extends BrowserTypeContract, PageType extends PageContract> {
-
-    public readonly browser: Browser<BrowserType, PageType>;
-
-    public readonly context: BrowserContextContract<PageType>;
+class Context<BrowserType extends BrowserTypeContract<PageType>, PageType extends PageContract> extends ContextEssentials<BrowserType, PageType> {
 
     constructor(browser: Browser<BrowserType, PageType>, context: BrowserContextContract<PageType>) {
-        this.browser = browser;
-        this.context = context;
-    }
-
-    public newPage(): Promise<PageType> {
-        return this.context.newPage();
-    }
-
-    public pages(): Array<PageType> {
-        return this.context.pages();
+        super(browser, context);
     }
 
 }

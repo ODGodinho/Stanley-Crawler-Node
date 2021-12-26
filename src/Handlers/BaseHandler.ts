@@ -1,16 +1,13 @@
-import Instances from '../../@types/Instances';
-import { PageContract } from '../../@types/Page';
-import SelectorsType from '../../@types/Selectors';
+import Instances from '../@types/Instances';
 import BasePage from '../Pages/BasePage';
+import BaseHandlerEssentials, { HandlerState } from '@odg/essentials-crawler-node/Handlers/BaseHandler';
+import SelectorsTypeEssentials from '../@types/Selectors';
+import { PageContract } from '../@types/Page';
 
-export enum HandlerState {
-    VERIFY = 0, // use to check handler again
-    COMPLETED = 1, // use if handler is completed
-}
 
 export type HandlerFunction = () => Promise<HandlerState>;
 
-abstract class BaseHandler<PageType extends PageContract> {
+abstract class BaseHandler<PageType extends PageContract> extends BaseHandlerEssentials<PageType> {
 
     public readonly basePage: BasePage<PageType>;
 
@@ -18,9 +15,10 @@ abstract class BaseHandler<PageType extends PageContract> {
 
     public readonly $i: Instances<PageType>;
 
-    public readonly $$s: SelectorsType;
+    public readonly $$s: SelectorsTypeEssentials;
 
     constructor(page: BasePage<PageType>) {
+        super(page);
         this.basePage = page;
         this.$i = page.$i;
         this.$$s = page.$$s;

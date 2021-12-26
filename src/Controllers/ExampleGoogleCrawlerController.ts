@@ -1,6 +1,6 @@
 import 'colors';
-import Instances from '../../@types/Instances';
-import { PageContract } from '../../@types/Page';
+import Instances from '../@types/Instances';
+import { PageContract } from '../@types/Page';
 import GoogleSelectionHandler from '../Handlers/Selection/GoogleSelectionHandler';
 import initInstances from '../Pages/Pages';
 
