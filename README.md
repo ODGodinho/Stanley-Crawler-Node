@@ -36,6 +36,8 @@
     -   [Install](#install)
 -   [Start Project](#start-project)
 -   [Variables Info](#variables-info)
+-   [Project Diagram](#project-diagram)
+    -   [Diagram Page](#diagram-page)
 -   [Project Patterns](#project-patterns)
     -   [Page Pattern](#page-patterns)
         -   [Start Methods Rules](#start-methods-rules)
@@ -106,6 +108,15 @@ yarn debug
 | $i                     | $$s                     | $s                    |
 | ---------------------- | ----------------------- | --------------------- |
 | Instances Pages Object | All Selectors Instances | Current Page Selector |
+
+## Project Diagram
+
+### Diagram Page
+
+The following example shows how it was implemented with google search
+
+![Stanley-Crawler-Diagram-Page.png](./images/Stanley-Crawler-Diagram-Page.png)
+
 
 ## Project Patterns
 
