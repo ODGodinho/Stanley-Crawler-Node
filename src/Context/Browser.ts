@@ -10,6 +10,7 @@ class Browser<BrowserType extends BrowserTypeContract<PageType>, PageType extend
 
     declare browserType: BrowserType;
     declare browser?: BrowserContract<PageType> | null;
+    public persistentContext?: BrowserContextContract<PageType>;
 
     constructor(browserType: BrowserType, context: typeof ContextEssentials) {
         super(browserType, context);
@@ -30,9 +31,8 @@ class Browser<BrowserType extends BrowserTypeContract<PageType>, PageType extend
 
     async initBrowser() {
         if (process.env.PERSISTENT_BROWSER && this.browserType.launchPersistentContext) {
-            const persistentContext: BrowserContextContract<PageContract> = await this.browserType.launchPersistentContext(process.env.PERSISTENT_BROWSER, {});
             this.browser = null;
-            this.newContext(undefined, persistentContext as BrowserContextContract<PageType>);
+            this.persistentContext = await this.browserType.launchPersistentContext(process.env.PERSISTENT_BROWSER, {});
             return;
         }
         this.browser = await this.browserType.launch(this.browserOptions());

@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "Types",
         "Readme",
-        "Packages"
+        "Packages",
+        "Context"
     ]
 }
