@@ -13,7 +13,6 @@ case "$crawler_id" in
         sed -i "s/\/\*§BrowserType§\*\//BrowserType/g" ./src/\@types/Browser.ts;
         sed -i "s/\/\*§BrowserContextImport§\*\//import { BrowserContext } from \"$name-core\";/g" ./src/\@types/Context.ts;
         sed -i "s/\/\*§BrowserContextOptionsImport§\*\//import { BrowserContextOptions } from \"$name-core\";/g" ./src/\@types/Context.ts;
-        sed -i "s/\/\*§BrowserImport§\*\//import { Browser } from \"$name-core\";/g" ./src/\@types/Context.ts;
         sed -i "s/\/\*§BrowserLaunchOptionImport§\*\//import { LaunchOptions as BrowserLaunchOptions, Browser, BrowserType } from \"$name\";/g" ./src/\@types/Browser.ts;;
 
     2)

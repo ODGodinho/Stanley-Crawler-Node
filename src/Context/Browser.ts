@@ -10,7 +10,7 @@ class Browser<BrowserType extends BrowserTypeContract<PageType>, PageType extend
 
     declare browserType: BrowserType;
     declare browser?: BrowserContract<PageType> | null;
-    public persistentContext?: BrowserContextContract<PageType>;
+    public persistentContext?: BrowserContextContract<PageContract>;
 
     constructor(browserType: BrowserType, context: typeof ContextEssentials) {
         super(browserType, context);
