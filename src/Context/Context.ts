@@ -1,8 +1,8 @@
-import { BrowserTypeContract } from '@odg/essentials-crawler-node/@types/Browser';
-import { BrowserContextContract } from '@odg/essentials-crawler-node/@types/Context';
-import { PageContract } from '@odg/essentials-crawler-node/@types/Page';
+import { BrowserContextContract } from '@odg/essentials-crawler-node';
 import ContextEssentials from '@odg/essentials-crawler-node/Context/Context';
 import Browser from './Browser';
+import { BrowserTypeContract } from '../@types/Browser';
+import { PageContract } from '../@types/Page';
 
 class Context<BrowserType extends BrowserTypeContract<PageType>, PageType extends PageContract> extends ContextEssentials<BrowserType, PageType> {
 

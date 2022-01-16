@@ -1,11 +1,18 @@
-import { BrowserLaunchOptionsContract, BrowserTypeContract } from '@odg/essentials-crawler-node/@types/Browser';
-import { PageContract } from '@odg/essentials-crawler-node/@types/Page';
-import BrowserAbstract from '@odg/essentials-crawler-node/Context/Browser';
+import { BrowserLaunchOptionsContract } from '@odg/essentials-crawler-node';
+import BrowserEssentials from '@odg/essentials-crawler-node/Context/Browser';
+import ContextEssentials from '@odg/essentials-crawler-node/Context/Context';
+import { BrowserContract } from '../@types/Browser';
+import { BrowserContextContract } from '../@types/Context';
+import { BrowserTypeContract } from '../@types/Browser';
+import { PageContract } from '../@types/Page';
 
-class Browser<BrowserType extends BrowserTypeContract<PageType>, PageType extends PageContract> extends BrowserAbstract<BrowserType, PageType> {
+class Browser<BrowserType extends BrowserTypeContract<PageType>, PageType extends PageContract> extends BrowserEssentials<BrowserType, PageType, typeof ContextEssentials> {
 
-    constructor(browserType: BrowserType) {
-        super(browserType);
+    declare browserType: BrowserType;
+    declare browser?: BrowserContract<PageType> | null;
+
+    constructor(browserType: BrowserType, context: typeof ContextEssentials) {
+        super(browserType, context);
     }
 
     protected browserOptions(): BrowserLaunchOptionsContract {
@@ -22,6 +29,12 @@ class Browser<BrowserType extends BrowserTypeContract<PageType>, PageType extend
     }
 
     async initBrowser() {
+        if (process.env.PERSISTENT_BROWSER && this.browserType.launchPersistentContext) {
+            const persistentContext: BrowserContextContract<PageContract> = await this.browserType.launchPersistentContext(process.env.PERSISTENT_BROWSER, {});
+            this.browser = null;
+            this.newContext(undefined, persistentContext as BrowserContextContract<PageType>);
+            return;
+        }
         this.browser = await this.browserType.launch(this.browserOptions());
     }
 
