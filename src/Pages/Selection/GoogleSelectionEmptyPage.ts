@@ -1,8 +1,10 @@
+import { PageContract } from "../../@types/Page";
+import BasePage from "../BasePage";
+import GoogleSearchPage from "../Search/GoogleSearchPage";
 
-import { PageContract } from '../../@types/Page';
-import BasePage from '../BasePage';
-
-export default class GoogleSelectionEmptyPage<PageType extends PageContract> extends BasePage<PageType> {
+export default class GoogleSelectionEmptyPage<
+    PageType extends PageContract,
+> extends BasePage<PageType> {
 
     public readonly $s = this.$$s.GoogleSelectionEmptySelector;
 
@@ -12,15 +14,12 @@ export default class GoogleSelectionEmptyPage<PageType extends PageContract> ext
 
     public async start(): Promise<this> {
         await this.newSearch();
+
         return this;
     }
 
-    public async newSearch() {
+    public async newSearch(): Promise<GoogleSearchPage<PageType>> {
         return this.$i.GoogleSearchPage.start();
-    }
-
-    public async nextStep(): Promise<BasePage<PageType> | null> {
-        return null;
     }
 
 }

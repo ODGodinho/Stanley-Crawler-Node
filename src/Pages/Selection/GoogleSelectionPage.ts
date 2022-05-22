@@ -1,7 +1,9 @@
-import { PageContract } from '../../@types/Page';
-import BasePage from '../BasePage';
+import { PageContract } from "../../@types/Page";
+import BasePage from "../BasePage";
 
-class GoogleSelectionPage<PageType extends PageContract> extends BasePage<PageType> {
+class GoogleSelectionPage<
+    PageType extends PageContract,
+> extends BasePage<PageType> {
 
     public readonly $s = this.$$s.GoogleSelectionSelector;
 
@@ -13,11 +15,15 @@ class GoogleSelectionPage<PageType extends PageContract> extends BasePage<PageTy
 
     public async start(): Promise<this> {
         await this.loadTextResult();
+
         return this;
     }
 
-    public async loadTextResult() {
-        this.firstElement = await this.page.$eval(this.$s.FIRST_RESULT_ELEMENT, (el: Element) => el.innerHTML);
+    public async loadTextResult(): Promise<void> {
+        this.firstElement = await this.page.$eval(
+            this.$s.FIRST_RESULT_ELEMENT,
+            (el: Element) => el.innerHTML,
+        );
     }
 
 }

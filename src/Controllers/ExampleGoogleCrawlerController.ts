@@ -1,8 +1,8 @@
-import 'colors';
-import Instances from '../@types/Instances';
-import { PageContract } from '../@types/Page';
-import GoogleSelectionHandler from '../Handlers/Selection/GoogleSelectionHandler';
-import initInstances from '../Pages/Pages';
+import "colors";
+import Instances from "../@types/Instances";
+import { PageContract } from "../@types/Page";
+import GoogleSelectionHandler from "../Handlers/Selection/GoogleSelectionHandler";
+import initInstances from "../Pages/Pages";
 
 class ExampleGoogleCrawlerController {
 
@@ -10,7 +10,7 @@ class ExampleGoogleCrawlerController {
 
     public $i: Instances<PageContract>;
 
-    constructor(page: PageContract) {
+    public constructor(page: PageContract) {
         this.page = page;
         this.$i = initInstances(this.page);
     }

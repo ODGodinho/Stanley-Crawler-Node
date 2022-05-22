@@ -11,6 +11,7 @@
     "debug": "tsc && set DEBUG=pw:api && node ./dist/index.js"
   },
   "devDependencies": {
+    "@odg/eslint-config-odg-linter-js": "*",
     "@types/dotenv": "^8.2.0",
     "@types/node": "*",
     "@typescript-eslint/eslint-plugin": "*",
@@ -20,7 +21,9 @@
     "eslint-config-prettier": "*",
     "eslint-import-resolver-typescript": "*",
     "eslint-plugin-import": "*",
+    "eslint-plugin-jsdoc": "*",
     "eslint-plugin-prettier": "*",
+    "eslint-plugin-promise": "*",
     "prettier": "*",
     "typescript": "*"
   },

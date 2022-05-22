@@ -1,13 +1,16 @@
-import Instances from '../@types/Instances';
-import BasePage from '../Pages/BasePage';
-import BaseHandlerEssentials, { HandlerState } from '@odg/essentials-crawler-node/Handlers/BaseHandler';
-import SelectorsTypeEssentials from '../@types/Selectors';
-import { PageContract } from '../@types/Page';
-
+import BaseHandlerEssentials, {
+    HandlerState,
+} from "@odg/essentials-crawler-node/Handlers/BaseHandler";
+import Instances from "../@types/Instances";
+import BasePage from "../Pages/BasePage";
+import SelectorsTypeEssentials from "../@types/Selectors";
+import { PageContract } from "../@types/Page";
 
 export type HandlerFunction = () => Promise<HandlerState>;
 
-abstract class BaseHandler<PageType extends PageContract> extends BaseHandlerEssentials<PageType> {
+abstract class BaseHandler<
+    PageType extends PageContract,
+> extends BaseHandlerEssentials<PageType> {
 
     public readonly basePage: BasePage<PageType>;
 
@@ -31,22 +34,25 @@ abstract class BaseHandler<PageType extends PageContract> extends BaseHandlerEss
 
     public abstract defaultTimeout(): Promise<number>;
 
-    public async resolvedSolution() {
+    public async resolvedSolution(): Promise<HandlerState> {
         return HandlerState.COMPLETED;
     }
 
-    public async runSolution(solution: HandlerFunction) {
+    public async runSolution(solution: HandlerFunction): Promise<HandlerState.COMPLETED> {
         if (typeof solution === "function") {
             return solution().then(async (resolved: HandlerState) => {
                 if (resolved === HandlerState.VERIFY) {
-                    const solved = await this.start();
-                    return solved;
+                    await this.start();
+
+                    return HandlerState.COMPLETED;
                 }
+
                 return resolved;
             });
         }
         throw new Error("Error: Solution is not a function");
     }
+
 }
 
 export default BaseHandler;

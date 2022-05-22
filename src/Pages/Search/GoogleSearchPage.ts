@@ -1,7 +1,9 @@
-import { PageContract } from '../../@types/Page';
-import BasePage from '../BasePage';
+import { PageContract } from "../../@types/Page";
+import BasePage from "../BasePage";
 
-class GoogleSearchPage<PageType extends PageContract> extends BasePage<PageType> {
+class GoogleSearchPage<
+    PageType extends PageContract,
+> extends BasePage<PageType> {
 
     public readonly $s = this.$$s.GoogleSearchSelector;
 
@@ -9,19 +11,21 @@ class GoogleSearchPage<PageType extends PageContract> extends BasePage<PageType>
         await this.goto();
         await this.fillSearch();
         await this.pressEnter();
+
         return this;
     }
 
-    public async goto() {
-        return this.page.goto(this.$s.GOOGLE_HOME_URL);
+    public async goto(): Promise<void> {
+        await this.page.goto(this.$s.GOOGLE_HOME_URL);
     }
 
-    public async fillSearch() {
+    public async fillSearch(): Promise<void> {
         const value = (Math.random() + 1).toString(36).substring(2, 18);
+
         return this.page.type(this.$s.SEARCH_INPUT, value);
     }
 
-    public async pressEnter() {
+    public async pressEnter(): Promise<void> {
         return this.page.keyboard.press("Enter");
     }
 
